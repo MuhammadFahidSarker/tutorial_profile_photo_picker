@@ -1,16 +1,39 @@
-# profile_photo_chooser
+# Create a profile photo picker in flutter
 
-A new Flutter project.
+## Follow the tutorial here: 
+- https://youtu.be/tdnLdmI9K6c
 
-## Getting Started
+## Steps
 
-This project is a starting point for a Flutter application.
+Dependencies:
+image_picker: https://pub.dev/packages/image_picker
+image_cropper: https://pub.dev/packages/image_cropper
 
-A few resources to get you started if this is your first Flutter project:
+Add it to the android manifest file (if you are targeting android):
+<activity
+android:name="com.yalantis.ucrop.UCropActivity"
+android:screenOrientation="portrait"
+android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Add it to the web/index.js (If you are targeting web):
+<head>
+  ....
+
+  <!-- Croppie -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.css" />
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/exif-js/2.3.0/exif.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.js"></script>
+
+....
+</head>
+
+Add the following to ios/runner/info.plist file (if you are targeting ios):
+
+NSPhotoLibraryUsageDescription - describe why your app needs permission for the photo library. This is called Privacy - Photo Library Usage Description in the visual editor.
+This permission will not be requested if you always pass false for requestFullMetadata, but App Store policy requires including the plist entry.
+NSCameraUsageDescription - describe why your app needs access to the camera. This is called Privacy - Camera Usage Description in the visual editor.
+NSMicrophoneUsageDescription - describe why your app needs access to the microphone, if you intend to record videos. This is called Privacy - Microphone Usage Description in the visual editor.
+
+
+
